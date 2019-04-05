@@ -7,9 +7,17 @@
  */
 
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View, SafeAreaView } from "react-native";
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  ScrollView
+} from "react-native";
 // import Ball from "./src/Ball";
 import Deck from "./src/Deck";
+import { Card, Button } from "react-native-elements";
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -63,13 +71,26 @@ const DATA = [
 
 export default class App extends Component {
   renderCard(item) {
-    return <Text>{item.text}</Text>;
+    return (
+      <Card key={item.id} title={item.text} image={{ uri: item.uri }}>
+        <Text style={{ marginBottom: 10 }}>
+          I can customize the card further
+        </Text>
+        <Button
+          icon={{ name: "code" }}
+          backgroundColor="#03A9F4"
+          title="View Now!"
+        />
+      </Card>
+    );
   }
 
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Deck data={DATA} renderCard={this.renderCard} />
+        <ScrollView>
+          <Deck data={DATA} renderCard={this.renderCard} />
+        </ScrollView>
       </SafeAreaView>
     );
   }
