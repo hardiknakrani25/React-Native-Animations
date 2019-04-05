@@ -87,9 +87,9 @@ export default class App extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <ScrollView>
-          <Deck data={DATA} renderCard={this.renderCard} />
-        </ScrollView>
+        {/* <ScrollView> */}
+        <Deck data={DATA} renderCard={this.renderCard} />
+        {/* </ScrollView> */}
       </SafeAreaView>
     );
   }
